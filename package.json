@@ -1,0 +1,60 @@
+{
+  "name": "@mrnkr/regex_t",
+  "version": "0.1.0",
+  "description": "C Regex evaluation now in js",
+  "main": "lib/index.js",
+  "typings": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrnkr/regex_t"
+  },
+  "bugs": {
+    "email": "xmr.nkr@gmail.com",
+    "url": "https://github.com/mrnkr/regex_t/issues"
+  },
+  "keywords": [
+    "regex",
+    "wasm",
+    "webassembly",
+    "c"
+  ],
+  "author": "Mr.NKR",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src/index.js --out-file lib/index.js ; yarn compile_c:prod",
+    "compile_c:dev": "emcc -O3 -s WASM=1 -s EXPORT_ALL=1 -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"cwrap\"]' src/regex_t.c ; mv a.out.* src",
+    "compile_c:prod": "emcc -O3 -s WASM=1 -s EXPORT_ALL=1 -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"cwrap\"]' src/regex_t.c ; mv a.out.* lib",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@types/jest": "^25.2.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^25.3.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js)?$",
+    "testPathIgnorePatterns": [
+      "src/*.out.js"
+    ],
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text"
+    ]
+  },
+  "dependencies": {
+    "node-wasm": "^0.1.4"
+  }
+}
