@@ -1,6 +1,6 @@
 {
   "name": "@mrnkr/regex_t",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "C Regex evaluation now in js",
   "main": "lib/index.js",
   "typings": "index.d.ts",
@@ -53,8 +53,5 @@
     "coverageReporters": [
       "text"
     ]
-  },
-  "dependencies": {
-    "node-wasm": "^0.1.4"
   }
 }

@@ -36,3 +36,4 @@ regex.match('099 123 456')
 ### Changelog
 
 * 0.1.0 - First release, pretty barebones but a proof of concept nonetheless
+* 0.1.1 - Never can I just release, I always have to forget something... There was an unused dependency in the first version...
